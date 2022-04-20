@@ -58,7 +58,7 @@ function nextGeneration() {
         let i1 = Math.round(Math.random() * (top.length - 1));
         let i2 = Math.round(Math.random() * (top.length - 1));
 
-        let babies = Thing.birth(top[i1], top[i2]);
+        let babies = Thing.birth(top[i1], top[i2], mutateProb);
 
         nextG.push(...babies);
     }

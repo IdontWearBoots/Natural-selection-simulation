@@ -72,7 +72,7 @@ class Thing {
      * @param {Thing} b parent b
      */
     // lol wth am i even supposed to name this
-    static birth(a, b){
+    static birth(a, b, mutProb){
         let c1 = new Thing(
             canvas.width - 55,
             Math.round(Math.random() * canvas.height),
@@ -80,7 +80,7 @@ class Thing {
             Gene.random(),
             "black"
         );
-        c1.genes = Gene.mix(a.genes, b.genes)[0];
+        c1.genes = Gene.mutate(Gene.mix(a.genes, b.genes)[0], mutProb);
 
         let c2 = new Thing(
             canvas.width - 55,
@@ -89,8 +89,8 @@ class Thing {
             Gene.random(),
             "black"
         );
-        c2.genes = Gene.mix(a.genes, b.genes)[0];
-
+        c2.genes = Gene.mutate(Gene.mix(a.genes, b.genes)[0], mutProb);
+        
         return [c1, c2];
     }
 }

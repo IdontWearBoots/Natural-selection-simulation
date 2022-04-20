@@ -1,3 +1,11 @@
+/**
+ * @param {number} start
+ * @param {number} stop
+ */
+function randInt(start, stop) {
+    return Math.floor(Math.random() * (stop - start)) + start;
+}
+
 class Gene {
     /**
      * @param {number} x 
@@ -20,7 +28,14 @@ class Gene {
      * @param {number} prob probability of mutating
      */
     static mutate(a, prob) {
+        a.geneX += Math.random() < prob ?
+            randInt(-1, randInt(0, 10)) * Math.random() * 10 : 0;
+        a.geneY += Math.random() < prob ?
+            randInt(-1, randInt(0, 10)) * Math.random() * 10 : 0;
+        a.geneIntensity += Math.random() < prob ?
+            randInt(-1, randInt(0, 10)) * Math.random() * 10 : 0;
 
+        return a;
     }
 
     /**
