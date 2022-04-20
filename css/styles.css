@@ -1,0 +1,9 @@
+body {
+    text-align: center;
+    font-family: Consolas;
+    background-color: aliceblue; 
+}
+
+canvas {
+    border: 1px solid black;
+}
