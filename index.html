@@ -15,20 +15,36 @@
 </head>
 <body>
 
-    <label for="thingCount">Nombre de choses au départ: </label>
-    <select name="" id="thingCount">
-        <option value="5">6</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-    </select>
+    <button class="useful-btn" id="btn-settings">⚙️</button>
 
-    <label for="mutateProb">Probabilité de mutation d'un gene(en %): </label>
-    <input type="number" name="" id="mutateProb">
+    <div id="settings">
+        <div class="top" style="text-align: left">
+            <button class="useful-btn" id="btn-close-settings">❌</button>
+        </div>
+        
+            <div class="stuff" style="width: 70%; margin-left: 15%;">
+                <label for="thingCount">Nombre de choses au départ: </label>
+                <select name="" id="thingCount">
+                    <option value="5">6</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
 
-    <button onclick="start()">Start</button>
+                <br>
+                <br>
+
+                <label for="mutateProb">Probabilité de mutation d'un gène (en %): </label>
+                <input type="number" name="" id="mutateProb">
+                <br><br><br>
+            </div>
+    </div>
+  
+    <button class="useful-btn" onclick="start()">Start</button>
     
-    <button onclick="updateNextGeneration()">Creer la prochaine génération</button>
+    <button class="useful-btn" onclick="updateNextGeneration()">Creer la prochaine génération</button>
+
+    <button class="useful-btn" onclick="location.reload()">Recommencer</button>
 
     <br>
     <br>
@@ -38,7 +54,16 @@
     <br>
     <br>
 
-    
+    <script>
+
+        $("#btn-settings").on("click", event => {
+            $("#settings").fadeToggle();
+        });
+
+        $("#btn-close-settings").on("click", event => {
+            $("#settings").fadeToggle();
+        });
+    </script>
 
 </body>
 </html>
