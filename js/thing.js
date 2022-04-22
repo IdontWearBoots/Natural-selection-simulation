@@ -76,7 +76,7 @@ class Thing {
         let c1 = new Thing(
             canvas.width - 55,
             Math.round(Math.random() * canvas.height),
-            10,
+            thingSize,
             Gene.random(),
             "black"
         );
@@ -85,7 +85,7 @@ class Thing {
         let c2 = new Thing(
             canvas.width - 55,
             Math.round(Math.random() * canvas.height),
-            10,
+            thingSize,
             Gene.random(),
             "black"
         );

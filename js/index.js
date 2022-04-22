@@ -4,8 +4,11 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.screen.availWidth - 60;
 canvas.height = window.screen.availHeight - 180;
 
-const thingSize = 50;
+const thingSize = 10;
 let allThings, thingCount, mutateProb;
+
+// previous stats (previous generation)
+let pStats = [0, 0, 0, 0, 0];
 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -20,7 +23,7 @@ function start() {
         let t = new Thing(
             canvas.width - 55,
             Math.round(Math.random() * canvas.height),
-            10,
+            thingSize,
             Gene.random(),
             "black"
         );
@@ -50,7 +53,36 @@ function update() {
 }
 
 function nextGeneration() {
-    let top = allThings.sort((a, b) => a.x - b.x).splice(0, Math.round(thingCount / 2));
+    let top = [...allThings.sort((a, b) => a.x - b.x)].splice(0, Math.round(thingCount / 2));
+
+    let dxMoy = 0;
+    allThings.forEach(
+        e => dxMoy += canvas.width - e.x
+    );
+    dxMoy /= thingCount;
+    let dxF = canvas.width - top[0].x;
+    
+    console.warn(allThings);
+    console.warn(top)
+    console.log(canvas.height, top[0], allThings.at(-1))
+    
+    let dxL = canvas.width - allThings.at(-1).x;
+    let gxF = -allThings[0].genes.geneX;
+    let gxL = -allThings.at(-1).genes.geneX;
+
+    $("#stats-tbl").html(
+        $("#stats-tbl").html() + 
+        `<tr>
+            <td class="${pStats[0] > dxMoy ? "red" : "green"}"> ${dxMoy} </td>
+            <td class="${pStats[1] > dxF ? "red" : "green"}"> ${dxF} </td>
+            <td class="${pStats[2] > dxL ? "red" : "green"}"> ${dxL} </td>
+            <td class="${pStats[3] > gxF ? "red" : "green"}"> ${gxF} </td>
+            <td class="${pStats[4] > gxL ? "red" : "green"}"> ${gxL} </td>
+        </tr>`
+    )
+
+    pStats = [dxMoy, dxF, dxL, gxF, gxL];
+
     let nextG = [];
 
     for(let e of top) {
@@ -68,8 +100,11 @@ function nextGeneration() {
 
 function updateNextGeneration() {
     allThings = nextGeneration();
-    allThings.forEach(e => {
-        e.draw();
-    });
-    update();
+    setTimeout(() => {
+        allThings.forEach(e => {
+            e.draw();
+        });
+        update();
+
+    }, 500)
 }

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulation</title>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="css/styles.css">
@@ -13,6 +14,7 @@
     <script src="js/thing.js"></script>
     <script src="js/index.js" defer></script>
 </head>
+
 <body>
 
     <button class="useful-btn" id="btn-settings">⚙️</button>
@@ -21,30 +23,28 @@
         <div class="top" style="text-align: left">
             <button class="useful-btn" id="btn-close-settings">❌</button>
         </div>
-        
-            <div class="stuff" style="width: 70%; margin-left: 15%;">
-                <label for="thingCount">Nombre de boules au départ: </label>
-                <select name="" id="thingCount">
-                    <option value="5">6</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
 
-                <br>
-                <br>
+        <div class="stuff" style="width: 70%; margin-left: 15%;">
+            <label for="thingCount">Nombre de boules au départ: </label>
+            <select name="" id="thingCount">
+                <option value="5">6</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
 
-                <label for="mutateProb">Probabilité de mutation d'un gène (en %): </label>
-                <input type="number" name="" id="mutateProb">
-                <br><br><br>
-            </div>
+            <br>
+            <br>
+
+            <label for="mutateProb">Probabilité de mutation d'un gène (en %): </label>
+            <input type="number" name="" id="mutateProb">
+            <br><br><br>
+        </div>
     </div>
-  
-    <button class="useful-btn" onclick="start()">Commencer</button>
-    
-    <button class="useful-btn" onclick="updateNextGeneration()">Creer la prochaine génération</button>
 
-    <button class="useful-btn" onclick="location.reload()">Recommencer</button>
+    <button class="useful-btn" onclick="start()" id="start">Commencer</button>
+
+    <button class="useful-btn" onclick="updateNextGeneration()">Creer la prochaine génération</button>
 
     <br>
     <br>
@@ -54,8 +54,32 @@
     <br>
     <br>
 
-    <script>
+    <div class="statistiques">
 
+        <table id="stats-tbl">
+            <caption>Statistiques des générations précédantes : </caption>
+            <tr>
+                <th>
+                    <em>dx</em> moyen
+                </th>
+                <th>
+                    <em>dx</em> premier
+                </th>
+                <th>
+                    <em>dx</em> dernier
+                </th>
+                <th>
+                    <em>gène x</em> premier
+                </th>
+                <th>
+                    <em>gène x</em> dernier
+                </th>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
         $("#btn-settings").on("click", event => {
             $("#settings").fadeToggle();
         });
@@ -63,7 +87,32 @@
         $("#btn-close-settings").on("click", event => {
             $("#settings").fadeToggle();
         });
+
+        $("#start").on("click", e => {
+            $("#start").text("Recommencer");
+            $("#stats-tbl").html(
+                `<caption>Statistiques des générations précédantes : </caption>
+                <tr>
+                    <th>
+                        <em>dx</em> moyen
+                    </th>
+                    <th>
+                        <em>dx</em> premier
+                    </th>
+                    <th>
+                        <em>dx</em> dernier
+                    </th>
+                    <th>
+                        <em>gène x</em> premier
+                    </th>
+                    <th>
+                        <em>gène x</em> dernier
+                    </th>
+                </tr>`
+            );
+        });
     </script>
 
 </body>
+
 </html>

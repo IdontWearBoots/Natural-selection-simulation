@@ -11,6 +11,7 @@ canvas {
 #settings {
     width: 50%;
     font-size: 28px;
+    color: white;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -20,6 +21,7 @@ canvas {
     text-align: center;
     font-family:'Courier New', Courier, monospace;
     padding: 30px;
+    border: 1px solid #4e6096;
 }
 
 
@@ -43,4 +45,22 @@ canvas {
 
 #btn-close-settings {
     border: 1px solid #7892c2;
+}
+
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.statistiques {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
