@@ -1,49 +1,84 @@
+.rick {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+}
+
 body {
     text-align: center;
-    font-family: Consolas;
+    font-family: Consolas, monospace;
     background-color: aliceblue; 
+}
+
+footer {
+    background-color: #283966;
+    color: #ffffff;
+}
+
+a {
+    color: #283966;
 }
 
 canvas {
     border: 1px solid black;
 }
 
-#settings {
+.panel {
+    height: 50%;
+    color: white;
     width: 50%;
     font-size: 28px;
     color: white;
+    background-color: #7892c2;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Consolas, monospace;
+    padding: 30px;
+    border: 3px solid #4e6096;
+}
+
+/* this is legitimately the best css I've ever written */
+.panel .top {
+    text-align: left;
+}
+.panel .content {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.centered-panel {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: #7892c2;
-    border-radius: 10px;
-    text-align: center;
-    font-family:'Courier New', Courier, monospace;
-    padding: 30px;
-    border: 1px solid #4e6096;
 }
 
+#information {
+    overflow-y: scroll;
+}
+#information p,li {
+    font-size: 1rem; 
+}
 
 .useful-btn {
 	background-color:#7892c2;
-	border-radius:12px;
-	border:1px solid #4e6096;
-	display:inline-block;
-	cursor:pointer;
+	border-radius: 12px;
+	border: 1px solid #4e6096;
+	display: inline-block;
+	cursor: pointer;
 	color:#ffffff;
-	font-family: 'Courier New', Courier, monospace;
-	font-size:25px;
-	padding:11px 13px;
-	text-decoration:none;
-	text-shadow:0px 0px 0px #283966;
+	font-family: Consolas, monospace;
+	font-size: 25px;
+	padding: 11px 13px;
+	text-decoration: none;
+	text-shadow: 0px 0px 0px #283966;
     transition: all 0.5s;
 }
 .useful-btn:hover {
 	background-color:#476e9e;
 }
 
-#btn-close-settings {
+#btn-close-settings, #btn-close-information {
     border: 1px solid #7892c2;
 }
 
@@ -52,6 +87,13 @@ canvas {
 }
 .red {
     color: red;
+}
+.blue {
+    color: blue;
+}
+
+.gene {
+    color: yellow;
 }
 
 table, th, td {

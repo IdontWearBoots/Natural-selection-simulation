@@ -4,9 +4,14 @@ class Thing {
      * @param {number} y 
      * @param {number} r 
      * @param {Gene} g 
-     * @param {string} col 
      */
-    constructor(x, y, r, g, col, p=false) {
+    constructor(
+        x = canvas.width - 55, 
+        y = Math.round(Math.random() * canvas.height),
+        r = thingSize,
+        g = Gene.random()
+    ) {
+        // for the line that follows them
         this.start = {
             x: x,
             y: y
@@ -17,18 +22,13 @@ class Thing {
         this.radius = r;
 
         this.genes = g;
-        this.color = col;
-
-        if(p){
-            console.log(x, y, r, g, col)
-            console.log(this.x, this.y, this.radius, this.genes, this.color)
-        }
     }
     move() {
 
         this.x += this.genes.geneX * this.genes.geneIntensity;
         this.y += this.genes.geneY * this.genes.geneIntensity;
 
+        // they bounce on the horizontal walls
         if(this.y > canvas.height || this.y < 0) {
             this.genes.geneY = -this.genes.geneY;
         }
@@ -44,7 +44,7 @@ class Thing {
         return this;
     }
     draw() {
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = this.genes.geneColor;
 
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
@@ -73,22 +73,10 @@ class Thing {
      */
     // lol wth am i even supposed to name this
     static birth(a, b, mutProb){
-        let c1 = new Thing(
-            canvas.width - 55,
-            Math.round(Math.random() * canvas.height),
-            thingSize,
-            Gene.random(),
-            "black"
-        );
+        let c1 = new Thing();
         c1.genes = Gene.mutate(Gene.mix(a.genes, b.genes)[0], mutProb);
 
-        let c2 = new Thing(
-            canvas.width - 55,
-            Math.round(Math.random() * canvas.height),
-            thingSize,
-            Gene.random(),
-            "black"
-        );
+        let c2 = new Thing();
         c2.genes = Gene.mutate(Gene.mix(a.genes, b.genes)[0], mutProb);
         
         return [c1, c2];

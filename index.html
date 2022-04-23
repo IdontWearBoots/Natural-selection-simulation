@@ -17,17 +17,140 @@
 
 <body>
 
-    <button class="useful-btn" id="btn-settings">⚙️</button>
+    <!-- DANGEROUS BUTTON !!! DO NOT CLICK -->
+    <button class="rick">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            👀            
+        </a>
+    </button>
 
-    <div id="settings">
+
+    <button class="useful-btn" id="btn-settings">⚙️</button>
+    <button class="useful-btn" id="btn-information">ℹ️</button>
+
+    <div id="information" class="panel centered-panel">
         <div class="top" style="text-align: left">
+            <button class="useful-btn" id="btn-close-information">❌</button>
+        </div>
+
+        <div class="content">
+            <h1 class="title">Simulation de la selection naturelle</h1>
+            
+            <br>
+            
+            <div class="info-intro">
+                <p>
+                    Voici un programme que j'ai crée qui simule (de manière
+                    simplifiée) la
+                    <a href="https://fr.wikipedia.org/wiki/S%C3%A9lection_naturelle">
+                        sélection naturelle.
+                    </a>
+                </p>
+                <p>
+                    Il fait ceci en selectionnant, a chaque génération, les "Boules" 
+                    ayant avancé le plus vers le coté gauche du terrain et donc ayant 
+                    parcouru le plus de distance. Ces Boules se reproduisent par 
+                    la suite et créent une nouvelle génération de Boules qui partagent leurs 
+                    caractéres bénéfiques.
+                </p>
+            </div>
+
+            <div class="info-comment">
+                <h2>Comment ça marche?</h2>
+                <p>
+                    Chaque boule possède 4 gènes dont 3 qui influencent leur mouvement
+                    (valeures comprises entre -50 et 50):
+                    <ul>
+                        <li>
+                            <em class="gene">gèneX</em>: le gène qui controle le mouvement horizontal
+                        </li>
+                        <li>
+                            <em class="gene">gèneY</em>: le gène qui controle le mouvement vertical
+                        </li>
+                        <li>
+                            <em class="gene">gèneIntensité</em>: le gène qui controle l'intensité de
+                            leur mouvement (dans les deux sens)
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    Ces gènes peuvent être bénéfique ou non pour le mouvement des boules, par ex: 
+                    <ul>
+                        <li>
+                            <em class="gene">gèneX</em> faible mais <em class="gene">gèneY</em>
+                            grand va traduire un mouvement quasi vertical
+                        </li>
+                        <li>
+                            <em class="gene">gèneX</em> grand mais <em class="gene">gèneIntensité</em> 
+                            faible va traduire un mouvement lent
+                        </li>
+                    </ul>
+                </p>
+                <p style="text-decoration: underline;">
+                    Lorsqu'une Boule se reproduit, elle peut ou ne peut pas transferer ses caractères 
+                </p>
+            </div>
+
+            <div class="info-mutation">
+                <h2>La mutation</h2>
+                <p>
+                    Lorsque deux Boules se reproduisent, une mutation peut avoir lieu dans
+                    une ou plusieures des gènes de leurs "enfants", les Boules ayant subi
+                    une mutation sont <span class="red red-thing">rouges</span> et leurs 
+                    enfants directes sont <span class="blue">bleus</span> (note: un enfant
+                    de Boule muté qui mute sera <span class="red red-thing">rouge</span>). 
+                </p>
+                <p style="text-decoration: underline;">
+                    Les mutations peuvent être bénéfiques ou nocives pour les individus.
+                </p>
+            </div>
+
+            <div class="info-commencer">
+                <h2>La simulation</h2>
+                <p>
+                    Après que vous avez, bien sur, totalement tout lu, vous êtes près pour
+                    lancer la simulation !  
+                </p>
+                <p>
+                    Avant d'appuyer sur le grand boutton 
+                    <strong style="border: 1px solid white;">Commencer</strong>
+                    vous devez spécifier le nombre de Boules et la probabilité de mutation de
+                    ceux-ci (par défaut définis à 6 Boules et 0%) en appuyant sur le boutton
+                    <strong style="border: 1px solid white;">⚙️</strong>.
+                </p>
+                <p>
+                    Au fur et à mesure de la simulation, la table de statistiques en dessous 
+                    du terrain serait mis a jour, vous donnant quelques informations sur 
+                    l'évolution graduelle du mouvement des Boules. <br>
+                    En plus de cela, une ligne bleu apparait pour démarquer la distance moyenne
+                    parcourue par la generation précédante. 
+                </p>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <p>
+                Amusez vous !
+            </p>
+            <p class="red">
+                ! Ceci n'est pas un logiciel scientifique certifié et par conséquent ne doit pas 
+                être traité comme un !
+            </p>
+        </div>
+
+    </div>
+
+    <div id="settings" class="panel centered-panel" style="display: none;">
+        <div class="top">
             <button class="useful-btn" id="btn-close-settings">❌</button>
         </div>
 
-        <div class="stuff" style="width: 70%; margin-left: 15%;">
+        <div class="content">
             <label for="thingCount">Nombre de boules au départ: </label>
             <select name="" id="thingCount">
-                <option value="5">6</option>
+                <option value="6">6</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="50">50</option>
@@ -44,7 +167,9 @@
 
     <button class="useful-btn" onclick="start()" id="start">Commencer</button>
 
-    <button class="useful-btn" onclick="updateNextGeneration()">Creer la prochaine génération</button>
+    <button class="useful-btn" onclick="updateNextGeneration()">
+        Creer la prochaine génération
+    </button>
 
     <br>
     <br>
@@ -80,15 +205,25 @@
     </div>
 
     <script>
-        $("#btn-settings").on("click", event => {
+        $("#btn-settings").click(event => {
             $("#settings").fadeToggle();
         });
 
-        $("#btn-close-settings").on("click", event => {
+        $("#btn-close-settings").click(event => {
             $("#settings").fadeToggle();
         });
 
-        $("#start").on("click", e => {
+        $("#btn-information").click(event => {
+            $("#information").fadeToggle();
+        });
+        
+        $("#btn-close-information").click(event => {
+            $("#information").fadeToggle();
+        });
+
+       
+
+        $("#start").click(event => {
             $("#start").text("Recommencer");
             $("#stats-tbl").html(
                 `<caption>Statistiques des générations précédantes : </caption>
@@ -114,5 +249,23 @@
     </script>
 
 </body>
+
+<br><br><br>
+
+<footer>
+    <br>
+    Oscar Baele 2022©
+    <br>
+    Contactez moi: baeleoscar@gmail.com    
+    <br>
+    <a 
+        href="https://github.com/IdontWearBoots/Natural-selection-simulation" 
+        style="color: rgb(94, 255, 0)"
+    >
+        GitHub
+    </a>
+    <br>
+    <br>
+</footer>
 
 </html>
