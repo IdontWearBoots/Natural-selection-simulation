@@ -1,8 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.screen.availWidth - 60;
-canvas.height = window.screen.availHeight - 180;
+canvas.width = window.screen.width - 60;
+canvas.height = window.screen.height - 215;
 
 const thingSize = 10;
 // array of all the blobs, number of things, probability of mutation, and number of generations

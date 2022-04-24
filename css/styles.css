@@ -94,6 +94,7 @@ canvas {
 
 .gene {
     color: yellow;
+    font-weight: bold;
 }
 
 table, th, td {

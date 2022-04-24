@@ -47,11 +47,17 @@
                     </a>
                 </p>
                 <p>
-                    Il fait ceci en selectionnant, a chaque génération, les "Boules" 
-                    ayant avancé le plus vers le coté gauche du terrain et donc ayant 
-                    parcouru le plus de distance. Ces Boules se reproduisent par 
-                    la suite et créent une nouvelle génération de Boules qui partagent leurs 
-                    caractéres bénéfiques.
+                    Il commence en créant une population initiale de <strong>n</strong>
+                    "Boules" dont le but est d'arriver à l'autre coté du terrain. A chaque
+                    génération, il séléctionne les <strong>n/2</strong> Boules ayant parcouru 
+                    le plus de distance (marqués en vert) qui se reproduisent pour créer la 
+                    génération suivante de <strong>n</strong> Boules.
+                </p>
+                <p>
+                    <u>
+                        La reproduction est aléatoire et pas toutes les Boules séléctionnées
+                        se reproduieron.
+                    </u>
                 </p>
             </div>
 
@@ -86,8 +92,11 @@
                         </li>
                     </ul>
                 </p>
-                <p style="text-decoration: underline;">
-                    Lorsqu'une Boule se reproduit, elle peut ou ne peut pas transferer ses caractères 
+                <p>
+                    <u>
+                        Lorsqu'une Boule se reproduit, elle peut ou ne peut pas transferer ses 
+                        caractères.
+                    </u>
                 </p>
             </div>
 
@@ -96,20 +105,23 @@
                 <p>
                     Lorsque deux Boules se reproduisent, une mutation peut avoir lieu dans
                     une ou plusieures des gènes de leurs "enfants", les Boules ayant subi
-                    une mutation sont <span class="red red-thing">rouges</span> et leurs 
-                    enfants directes sont <span class="blue">bleus</span> (note: un enfant
-                    de Boule muté qui mute sera <span class="red red-thing">rouge</span>). 
+                    une mutation sont <strong class="red red-thing">rouges</strong> et leurs 
+                    enfants directes sont <strong class="blue">bleus</strong> (note: un enfant
+                    de Boule muté qui mute sera <strong class="red red-thing">rouge</strong>). 
                 </p>
-                <p style="text-decoration: underline;">
-                    Les mutations peuvent être bénéfiques ou nocives pour les individus.
+                <p>
+                    <u>
+                        Les mutations peuvent être bénéfiques (<em class="gene">gèneX</em> qui
+                        augmente) ou nocives (<em class="gene">gèneX</em> négatif) pour les 
+                        individus.
+                    </u>
                 </p>
             </div>
 
             <div class="info-commencer">
                 <h2>La simulation</h2>
                 <p>
-                    Après que vous avez, bien sur, totalement tout lu, vous êtes près pour
-                    lancer la simulation !  
+                    Vous êtes maintenant près pour lancer la simulation !
                 </p>
                 <p>
                     Avant d'appuyer sur le grand boutton 
@@ -121,7 +133,8 @@
                 <p>
                     Au fur et à mesure de la simulation, la table de statistiques en dessous 
                     du terrain serait mis a jour, vous donnant quelques informations sur 
-                    l'évolution graduelle du mouvement des Boules. <br>
+                    l'évolution graduelle du mouvement des Boules. 
+                    <br>
                     En plus de cela, une ligne bleu apparait pour démarquer la distance moyenne
                     parcourue par la generation précédante. 
                 </p>
@@ -194,10 +207,10 @@
                     <em>dx</em> dernier
                 </th>
                 <th>
-                    <em>gène x</em> premier
+                    <em>gèneX</em> premier
                 </th>
                 <th>
-                    <em>gène x</em> dernier
+                    <em>gèneX</em> dernier
                 </th>
             </tr>
         </table>
