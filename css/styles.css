@@ -24,7 +24,7 @@ canvas {
 }
 
 .panel {
-    height: 50%;
+    max-height: 50%;
     color: white;
     width: 50%;
     font-size: 28px;
@@ -40,8 +40,12 @@ canvas {
 /* this is legitimately the best css I've ever written */
 .panel .top {
     text-align: left;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
 }
-.panel .content {
+
+.panel .panel-content {
     width: 70%;
     margin-left: 15%;
 }
