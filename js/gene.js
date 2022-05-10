@@ -59,9 +59,9 @@ class Gene {
         let out = new Array(outcomes);
         for(let i = 0; i < outcomes; i++){
             out[i] = new Gene(
-                Math.random() >= 0.5 ? a.geneX : b.geneX,
-                Math.random() >= 0.5 ? a.geneY : b.geneY,
-                Math.random() >= 0.5 ? a.geneIntensity : b.geneIntensity,
+                (a.geneX + b.geneX) / 2,
+                (a.geneY + b.geneY) / 2,
+                (a.geneIntensity + b.geneIntensity) / 2,
                 a.geneColor === "red" || b.geneColor === "red" ? "blue" : "black"
             )
         }

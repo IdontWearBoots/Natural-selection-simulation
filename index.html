@@ -33,7 +33,7 @@
             <button class="useful-btn" id="btn-close-information">❌</button>
         </div>
 
-        <div class="content">
+        <div class="panel-content">
             <h1 class="title">Simulation de la selection naturelle</h1>
             
             <br>
@@ -64,9 +64,8 @@
             <div class="info-comment">
                 <h2>Comment ça marche?</h2>
                 <p>
-                    Chaque boule possède 4 gènes dont 3 qui influencent leur mouvement
-                    (valeures comprises entre -50 et 50):
-                    <ul>
+                    Chaque boule possède 4 gènes dont 3 qui influencent leur mouvement:
+                   <ul>
                         <li>
                             <em class="gene">gèneX</em>: le gène qui controle le mouvement horizontal
                         </li>
@@ -93,9 +92,13 @@
                     </ul>
                 </p>
                 <p>
+                    Chaque gène à d'inonbrables allèles, représentés par des valeurs entre -50 et 50
+                    mais qui sont plus souvent entre -15 et 15.
+                    <br>
+                    <br>
                     <u>
-                        Lorsqu'une Boule se reproduit, elle peut ou ne peut pas transferer ses 
-                        caractères.
+                        Lorsque deux Boules se reproduisent, les gènes de leur progéniture sont la
+                        moyenne des deux gènes des parents.  
                     </u>
                 </p>
             </div>
@@ -160,7 +163,7 @@
             <button class="useful-btn" id="btn-close-settings">❌</button>
         </div>
 
-        <div class="content">
+        <div class="panel-content">
             <label for="thingCount">Nombre de boules au départ: </label>
             <select name="" id="thingCount">
                 <option value="6">6</option>
@@ -201,10 +204,10 @@
                     <em>dx</em> moyen
                 </th>
                 <th>
-                    <em>dx</em> premier
+                    <em>gèneY</em> premier
                 </th>
                 <th>
-                    <em>dx</em> dernier
+                    <em>gèneY</em> dernier
                 </th>
                 <th>
                     <em>gèneX</em> premier
@@ -245,10 +248,10 @@
                         <em>dx</em> moyen
                     </th>
                     <th>
-                        <em>dx</em> premier
+                        <em>gèneY</em> premier
                     </th>
                     <th>
-                        <em>dx</em> dernier
+                        <em>gèneY</em> dernier
                     </th>
                     <th>
                         <em>gène x</em> premier

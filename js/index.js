@@ -14,7 +14,8 @@ let pStats = [0, 0, 0, 0, 0];
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 function start() {
-    
+   
+    pStats = [0, 0, 0, 0, 0];
     thingCount = Number($("#thingCount")[0].value);
     mutateProb = Number($("#mutateProb")[0].value) / 100;
     genNum = 1;
@@ -75,8 +76,8 @@ function nextGeneration() {
     dxMoy /= thingCount;
 
     // distance first and last thing => fastest/slowest
-    let dxF = canvas.width - top[0].x;
-    let dxL = canvas.width - allThings.at(-1).x;
+    let gyF = top[0].genes.geneY;
+    let gyL = allThings.at(-1).genes.geneY;
     // geneX first and last thing => fastest/slowest
     let gxF = -allThings[0].genes.geneX;
     let gxL = -allThings.at(-1).genes.geneX;
@@ -86,15 +87,15 @@ function nextGeneration() {
         $("#stats-tbl").html() + 
         `<tr>
             <td class="${pStats[0] > dxMoy ? "red" : "green"}"> ${dxMoy} </td>
-            <td class="${pStats[1] > dxF ? "red" : "green"}"> ${dxF} </td>
-            <td class="${pStats[2] > dxL ? "red" : "green"}"> ${dxL} </td>
+            <td class="${pStats[1] > gyF ? "red" : "green"}"> ${gyF} </td>
+            <td class="${pStats[2] > gyL ? "red" : "green"}"> ${gyL} </td>
             <td class="${pStats[3] > gxF ? "red" : "green"}"> ${gxF} </td>
             <td class="${pStats[4] > gxL ? "red" : "green"}"> ${gxL} </td>
         </tr>`
     )
     
     // update previous stats
-    pStats = [dxMoy, dxF, dxL, gxF, gxL];
+    pStats = [dxMoy, gyF, gyL, gxF, gxL];
 
     let nextG = [];
 
