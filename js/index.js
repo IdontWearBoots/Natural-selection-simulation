@@ -9,13 +9,13 @@ const thingSize = 10;
 let allThings, thingCount, mutateProb, genNum;
 
 // previous stats (previous generation)
-let pStats = [0, 0, 0, 0, 0];
+let pStats = [0, 0, 0, 0];
 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 function start() {
    
-    pStats = [0, 0, 0, 0, 0];
+    pStats = [0, 0, 0, 0];
     thingCount = Number($("#thingCount")[0].value);
     mutateProb = Number($("#mutateProb")[0].value) / 100;
     genNum = 1;
@@ -70,32 +70,35 @@ function nextGeneration() {
 
     // av distance
     let dxMoy = 0;
+    let gxMoy = 0;
+    let gyMoy = 0;
+    let giMoy = 0;
+    
     for(let e of allThings) {
         dxMoy += canvas.width - e.x;
+        gxMoy += Math.abs(e.genes.geneX);
+        gyMoy += e.genes.geneY;
+        giMoy += e.genes.geneIntensity;
     }
-    dxMoy /= thingCount;
 
-    // distance first and last thing => fastest/slowest
-    let gyF = top[0].genes.geneY;
-    let gyL = allThings.at(-1).genes.geneY;
-    // geneX first and last thing => fastest/slowest
-    let gxF = -allThings[0].genes.geneX;
-    let gxL = -allThings.at(-1).genes.geneX;
+    dxMoy /= thingCount;
+    gxMoy /= thingCount;
+    gyMoy /= thingCount;
+    giMoy /= thingCount;
 
     $("#stats-tbl").html(
         // red color if decreased else green
         $("#stats-tbl").html() + 
         `<tr>
             <td class="${pStats[0] > dxMoy ? "red" : "green"}"> ${dxMoy} </td>
-            <td class="${pStats[1] > gyF ? "red" : "green"}"> ${gyF} </td>
-            <td class="${pStats[2] > gyL ? "red" : "green"}"> ${gyL} </td>
-            <td class="${pStats[3] > gxF ? "red" : "green"}"> ${gxF} </td>
-            <td class="${pStats[4] > gxL ? "red" : "green"}"> ${gxL} </td>
+            <td class="${pStats[1] > gyMoy ? "red" : "green"}"> ${gyMoy} </td>
+            <td class="${pStats[2] > gxMoy ? "red" : "green"}"> ${gxMoy} </td>
+            <td class="${pStats[3] > giMoy ? "red" : "green"}"> ${giMoy} </td>
         </tr>`
     )
     
     // update previous stats
-    pStats = [dxMoy, gyF, gyL, gxF, gxL];
+    pStats = [dxMoy, gyMoy, gxMoy, giMoy];
 
     let nextG = [];
 
