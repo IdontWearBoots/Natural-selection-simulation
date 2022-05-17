@@ -8,7 +8,7 @@ function resetGraph() {
     g_canvas = document.getElementById("graphs");
     g_ctx = g_canvas.getContext("2d");
     
-    labels = [];
+    labels = [0];
 
     data = {
         labels: labels,
@@ -46,7 +46,7 @@ function resetGraph() {
     chart.resize(chart_w, chart_h);
 }
 
-let labels = [];
+let labels = [0];
 
 let data = {
     labels: [],

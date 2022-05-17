@@ -116,7 +116,7 @@ function nextGeneration() {
         nextG.push(...babies);
     }
 
-    labels.push(genNum++);
+    labels.push(++genNum);
 
     return nextG;
 }
