@@ -109,5 +109,4 @@ table, th, td {
 .statistiques {
     display: flex;
     justify-content: center;
-    align-items: center;
 }

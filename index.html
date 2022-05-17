@@ -8,11 +8,13 @@
     <title>Simulation</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/gene.js"></script>
     <script src="js/thing.js"></script>
     <script src="js/index.js" defer></script>
+    <script src="js/graphing.js" defer></script>
 </head>
 
 <body>
@@ -27,6 +29,7 @@
 
     <button class="useful-btn" id="btn-settings">⚙️</button>
     <button class="useful-btn" id="btn-information">ℹ️</button>
+    <button class="useful-btn" id="quick-gen">Avancer de 10 generations</button>
 
     <div id="information" class="panel centered-panel">
         <div class="top" style="text-align: left">
@@ -196,23 +199,7 @@
 
     <div class="statistiques">
 
-        <table id="stats-tbl">
-            <caption>Statistiques des générations précédantes : </caption>
-            <tr>
-                <th>
-                    <em>dx</em> moyen
-                </th>
-                <th>
-                    <em>gèneY</em> moyen
-                </th>
-                <th>
-                    <em>gèneX</em> moyen
-                </th>
-                <th>
-                    <em>gèneIntensité</em> moyen
-                </th>
-            </tr>
-        </table>
+        <canvas id="graphs"></canvas>
 
     </div>
 
@@ -237,23 +224,16 @@
 
         $("#start").click(event => {
             $("#start").text("Recommencer");
-            $("#stats-tbl").html(
-                `<caption>Statistiques des générations précédantes : </caption>
-                <tr>
-                    <th>
-                        <em>dx</em> moyen
-                    </th>
-                    <th>
-                        <em>gèneY</em> moyen
-                    </th>
-                    <th>
-                        <em>gèneX</em> moyen
-                    </th>
-                    <th>
-                        <em>gèneIntensité</em> moyen
-                    </th>
-                </tr>`
-            );
+            
+            geneXAvg.length = 0;
+            geneYAvg.length = 0;
+            geneIAvg.length = 0;
+
+            resetGraph();
+        });
+
+        $("#quick-gen").click(event => {
+            quickGen();
         });
     </script>
 

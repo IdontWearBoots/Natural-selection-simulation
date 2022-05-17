@@ -20,7 +20,7 @@ class Gene {
     }
 
     static random() {
-        return new Gene(-Math.random(), Math.random() * 2 - 1, Math.random() * 10);
+        return new Gene(-Math.random(), Math.random() * 50 - 1, Math.random() * 10);
     }
 
     /**
