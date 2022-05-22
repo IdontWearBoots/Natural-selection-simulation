@@ -110,3 +110,7 @@ table, th, td {
     display: flex;
     justify-content: center;
 }
+
+#N_generations-container {
+    display: none;
+}

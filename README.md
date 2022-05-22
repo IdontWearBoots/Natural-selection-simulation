@@ -2,8 +2,8 @@
 Un petit projet simulant (approximativement) la séléction naturelle darwinienne pour mon cours d'SVT.
 
 ## Comment ça marche ?
-Vous selectionnez d'abord le nombre de "Boules" qui representera la population de départ (n).
-La selection se fait sur l'aptitude des "Boules" d'arriver a l'autre coté du terrain. A la fin de chaque génération les n/2 boules qui sont arrivés les plus près de l'autre coté du terrain sont séléctionnés pour se reproduire, produisant une nouvelle population de n boules.
+Vous selectionnez d'abord les __n__ "Boules" qui representera la population de départ.
+La selection se fait sur l'aptitude des "Boules" d'arriver a l'autre coté du terrain. A la fin de chaque génération les __n / 2__ boules qui sont arrivés les plus près de l'autre coté du terrain sont séléctionnés pour se reproduire, produisant une nouvelle population de __n__ boules.
 
 Chaque boule possede 3 gènes qui agissent sur le mouvement des boules: 
 - geneX => leur mouvement horizontal
