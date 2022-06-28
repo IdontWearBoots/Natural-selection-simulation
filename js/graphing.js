@@ -1,9 +1,9 @@
 /*
-*   Honestly thanks so much for the people who made chart.js,
-*   really easy to use and very very useful
-*   [LINKS]
-*   https://www.chartjs.org/, https://github.com/chartjs/Chart.js
-*/
+ *   Honestly thanks so much for the people who made chart.js,
+ *   really easy to use and very very useful
+ *   [LINKS]
+ *   https://www.chartjs.org/, https://github.com/chartjs/Chart.js
+ */
 
 // graph canvas / ctx
 let g_canvas = document.getElementById("graphs");
@@ -20,13 +20,12 @@ function resetGraph() {
     // reset graph canvas / ctx vars
     g_canvas = document.getElementById("graphs");
     g_ctx = g_canvas.getContext("2d");
-    
+
     // reset labels, all the data and the config obj
     labels = [0];
     data = {
         labels: labels,
-        datasets: [
-            {
+        datasets: [{
                 label: "gèneY moyen",
                 borderColor: "blue",
                 backgroundColor: "blue",
@@ -53,7 +52,7 @@ function resetGraph() {
             responsive: false
         }
     }
-    
+
     // reinitialise the chart on the graph canvas 
     chart = new Chart(g_ctx, config);
     // resize properly
@@ -66,8 +65,7 @@ let labels = [0];
 // data that goes on to the chart
 let data = {
     labels: labels,
-    datasets: [
-        {
+    datasets: [{
             label: "gèneY moyen",
             borderColor: "blue",
             backgroundColor: "blue",

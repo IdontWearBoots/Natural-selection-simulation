@@ -24,6 +24,11 @@ class Thing {
         this.radius = r;
         this.genes = g;
 
+        // for the bouncing on the sides of the board
+        // otherwise they continue off into the distance and the client cannot 
+        // follow the Thing's movement, used to be negating the actual gene but
+        // really isn't actually biologically possible
+        this.yMov = 1;
     }
 
     // move the "Thing" a certain amout depending on their genes
@@ -33,15 +38,14 @@ class Thing {
         // the value of their gene X or Y multiplied by their intensity gene
         // their movement is an average of their alleles for each gene (hence .avg())
         this.x += this.genes.geneX.avg() * this.genes.geneIntensity.avg();
-        this.y += this.genes.geneY.avg() * this.genes.geneIntensity.avg();
+        this.y += this.genes.geneY.avg() * this.genes.geneIntensity.avg() * this.yMov;
 
         // they bounce on the horizontal walls
         if(this.y > canvas.height || this.y < 0) {
             // if they hit a wall, inverse their Y gene
-            this.genes.geneY.neg();
+            this.yMov = -this.yMov;
         }
 
-        
         // return the newly modified object (not that useful but hey)
         return this;
     }

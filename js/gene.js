@@ -120,9 +120,9 @@ class Genotype {
         // start with too little initial values, movement is unexiting and hard too observe
         // so if there is no mutation, bump up those init values to make movement more 
         if(mutateProb === 0) {
-            return new Genotype(Gene.random(5).neg(), Gene.random(5, -1), Gene.random(2));
+            return new Genotype(Gene.random(5).neg(), Gene.random(5, -5), Gene.random(2));
         }
-        return new Genotype(Gene.random().neg(), Gene.random(5, -1), Gene.random(2));
+        return new Genotype(Gene.random().neg(), Gene.random(5, -5), Gene.random(2));
     }
 
     /**

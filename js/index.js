@@ -108,7 +108,7 @@ function nextGeneration() {
         // abs to give a better idea of what the general value is, with negative mixing 
         // with positive values, you get values close to 0 whiwh does not properly illustrate 
         // the values of gene Y
-        gyMoy += Math.abs(e.genes.geneY.avg());
+        gyMoy += e.genes.geneY.avg();
         giMoy += e.genes.geneIntensity.avg();
     }
 
